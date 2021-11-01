@@ -13,7 +13,8 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            '@routes' : path.resolve(__dirname,'src/routes/')
+            '@routes' : path.resolve(__dirname,'src/routes/'),
+            '@pages' : path.resolve(__dirname,'src/pages/')
         }
     },
     module: {
