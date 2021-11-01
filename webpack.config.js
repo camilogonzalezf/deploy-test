@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: './src/index.js',
     output:{
+        publicPath: '/',
         path: path.resolve(__dirname,'build'),
         filename: 'bundle.js'
     },
@@ -14,14 +15,14 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             '@routes' : path.resolve(__dirname,'src/routes/'),
-            '@pages' : path.resolve(__dirname,'src/pages/')
+            '@pages' : path.resolve(__dirname,'src/pages/'),
         }
     },
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                
                 use:{
                     loader: 'babel-loader'
                 }
