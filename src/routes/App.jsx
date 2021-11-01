@@ -1,0 +1,8 @@
+import React from 'react';
+const App = () => {
+    return (
+        <h1>Prueba Deploy</h1>
+    );
+}
+
+export default App;
