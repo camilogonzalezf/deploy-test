@@ -6,7 +6,7 @@ import NotFound from "@pages/NotFound";
 
 const App = () => {
   return (
-    <BrowserRouter basename='/deploy-test'>
+    <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route exact path="/who" component={Who} />
