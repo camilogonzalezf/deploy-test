@@ -6,7 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: `${__dirname}/src/index.js`,
     output:{
-      path: `${__dirname}/`,
+      path: `${__dirname}/deploy-test`,
+      publicPath:'/deploy-test/',
       filename: 'bundle.js',
     },
     mode: 'development',
@@ -49,6 +50,14 @@ module.exports = {
         ]
     },
     plugins: [
+      new HtmlWebpackPlugin({  // Also generate a test.html
+        filename: 'index.html',
+        template: 'public/index.html'
+      }),
+      new HtmlWebpackPlugin({  // Also generate a test.html
+        filename: '404.html',
+        template: 'public/404.html'
+      }),
         new MiniCssExtractPlugin({
             filename: '[name].css'
         },)
