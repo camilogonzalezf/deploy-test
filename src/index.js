@@ -4,11 +4,7 @@ import App from './routes/App';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render (
-  <React.StrictMode>
-    <BrowserRouter basename="/deploy-test">
-      <App />
-   </BrowserRouter>
-  </React.StrictMode>,
+    <App />,
   document.getElementById('app')
 )
 
