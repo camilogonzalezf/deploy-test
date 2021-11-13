@@ -61,5 +61,10 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css'
         },)
-    ]
+    ],
+    devServer: {
+      historyApiFallback: {
+        rewrites: [{ from: /\/deploy-test\/[^?]/, to: '/404.html' }],
+      },
+    },
 }
