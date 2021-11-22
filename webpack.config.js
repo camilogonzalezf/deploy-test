@@ -4,24 +4,25 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 module.exports = {
-    entry: './src/index.js',
+    entry: `${__dirname}/src/index.js`,
     output:{
-        path: path.resolve(__dirname,'build'),
-        filename: 'bundle.js',
-        publicPath: '/'
+      path: `${__dirname}/deploy-test`,
+      publicPath:'/deploy-test/',
+      filename: 'bundle.js',
     },
     mode: 'development',
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            '@routes' : path.resolve(__dirname,'src/routes/')
+            '@routes' : path.resolve(__dirname,'src/routes/'),
+            '@pages' : path.resolve(__dirname,'src/pages/'),
         }
     },
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                
                 use:{
                     loader: 'babel-loader'
                 }
@@ -49,16 +50,21 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-            filename: './index.html'
-        }),
+      new HtmlWebpackPlugin({  // Also generate a test.html
+        filename: 'index.html',
+        template: 'public/index.html'
+      }),
+      new HtmlWebpackPlugin({  // Also generate a test.html
+        filename: '404.html',
+        template: 'public/404.html'
+      }),
         new MiniCssExtractPlugin({
             filename: '[name].css'
         },)
     ],
     devServer: {
-        historyApiFallback: true,
-    }
-
+      historyApiFallback: {
+        rewrites: [{ from: /\/deploy-test\/[^?]/, to: '/404.html' }],
+      },
+    },
 }
